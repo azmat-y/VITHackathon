@@ -68,6 +68,17 @@ router.put('/:id', async (request, response) => {
   }
 })
 
+// Route to get the list of all complaints
+router.get("/", async (request, response) => {
+  try{
+      const comps = await Comps.find({});
+      return response.status(200).json(comps);
+  }catch(error){
+      console.log(error.message);
+      return response.status(500).send({message: error.message});
+  }
+});
+
 router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;
