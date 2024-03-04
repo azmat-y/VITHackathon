@@ -15,3 +15,5 @@ const GuardSchema = mongoose.Schema(
         timestamps:true,
     }
 );
+
+export const Guard = mongoose.model('Guard', GuardSchema);
