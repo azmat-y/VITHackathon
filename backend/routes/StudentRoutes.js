@@ -7,23 +7,23 @@ router.post('/', async (request, response) => {
   try {
     if (
       !request.body.name ||
-      !request.body.registraionNumber ||
+      !request.body.regNumber ||
       !request.body.roomNumber ||
       !request.body.blockNumber
     ) {
       return response.status(400).send({
-        message: 'send all required fields: name , registration number , room number, block number',
+        message: 'send all required fields: name , registration number , room number, block number'
       });
     }
     const newStudent = {
       name: request.body.name,
-      registraionNumber: request.body.registraionNumber,
+      regNumber: request.body.regNumber,
       roomNumber: request.body.roomNumber,
       blockNumber: request.body.blockNumber,
     };
 
-    const Student = await Student.create(newStudent);
-    return response.status(201).send(Student);
+    const student = await Student.create(newStudent);
+    return response.status(201).send(student);
   } catch (error) {
     console.log(error.message);
     return response.status(500).send({ message: error.message });
@@ -47,7 +47,7 @@ router.put('/:id', async (request, response) => {
 
     if (
       !request.body.name ||
-      !request.body.registraionNumber ||
+      !request.body.regNumber ||
       !request.body.roomNumber ||
       !request.body.blockNumber
     ) {
